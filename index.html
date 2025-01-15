@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Payment Request</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>UPI Payment Request</h1>
+    <form id="upiForm" onsubmit="processPayment(event)">
+        <label for="userUpiId">Enter Your UPI ID:</label><br>
+        <input type="text" id="userUpiId" name="userUpiId" placeholder="Enter Your UPI ID" required><br>
+        <p>Requesting payment to: <b>sharadkombe-1@okhdfcbank</b></p>
+        <p>Amount: <b>₹500</b></p>
+        <button type="submit">Continue to Payment</button>
+    </form>
+    <p id="status"></p>
+
+    <script>
+        function processPayment(event) {
+            event.preventDefault(); // Prevent form submission
+            const userUpiId = document.getElementById('userUpiId').value;
+            if (userUpiId) {
+                document.getElementById('status').textContent = `Payment request sent to ${userUpiId} for ₹500.`;
+            } else {
+                document.getElementById('status').textContent = 'Please enter a valid UPI ID.';
+            }
+        }
+    </script>
+</body>
+</html>
